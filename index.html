@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" 
-        content="SceneArchitect: Structurally Consistent and Semantically Faithful Progressive 3D Scene Generation">
-  <meta name="keywords" content="3D Scene Generation, Structural Consistency, Semantic Fidelity, 3D Gaussian Splatting">
+        content="SceneArchitect: Progressive 3D Scene Generation with Structural Consolidation and Semantic Grounding">
+  <meta name="keywords" content="3D Scene Generation, Structural Consistency, Semantic Grounding, 3D Gaussian Splatting">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>SceneArchitect: Structurally Consistent and Semantically Faithful Progressive 3D Scene Generation</title>
+  <title>SceneArchitect: Progressive 3D Scene Generation with Structural Consolidation and Semantic Grounding</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -187,8 +187,6 @@
 
 </head>
 <body>
-</head>
-<body>
 
 <section class="hero">
   <div class="hero-body">
@@ -199,30 +197,20 @@
           </div>
         </h1>
       <h1 class="title is-2 publication-title">
-        Structurally Consistent and Semantically Faithful Progressive 3D Scene Generation
+        Progressive 3D Scene Generation with Structural Consolidation and Semantic Grounding
       </h1>
 
       <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
-        <span class="author-block">
-          Hanning Lu</a><sup>1</sup>,</span>
-        <span class="author-block">
-          Yifan Zhang</a><sup>1</sup>,</span>
-        <span class="author-block"> 
-          <a href="https://web.xidian.edu.cn/songbin/"></a>Bin Song</a><sup>1*</sup>
+        <span class="author-block">Anonymous Submission</span>
+      </div>
+
+      <div class="publication-links" style="margin-top: 1rem;">
+        <span class="link-block">
+          <a href="https://anonymous.4open.science/r/SceneArchitect" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+            <span class="icon"><i class="fas fa-code"></i></span>
+            <span>Anonymous Code</span>
+          </a>
         </span>
-      </div>
-
-      <style>
-        .univerity-block {
-          margin-right: 14px;
-      }
-      </style>
-      <div class="is-size-5 publication-authors">
-        <span class="univerity-block"><sup>1</sup>Xidian University, China</span>
-      </div>
-
-      <div class="is-size-6 publication-authors">
-        <span class="author-block">*Corresponding author</span>
       </div>
 
     </div>
@@ -239,8 +227,7 @@
       </div>
       <div class="content has-text-justified">
         <p>
-          <strong>Overview of SceneArchitect.</strong> Guided by a single text prompt, <em>SceneArchitect</em> alternates Structural Consolida-
-          tion and Semantic Grounding to generate a scalable 3D scene with improved structural consistency and semantic fidelity, supporting free-viewpoint exploration during progressive view expansion.
+          Fig. <strong>Overview of SceneArchitect.</strong> Starting from a text prompt and an initial generated view, <em>SceneArchitect</em> progressively expands a navigable 3D scene by alternating Structural Consolidation and Semantic Grounding, followed by depth-regularized Gaussian refinement for free-viewpoint exploration.
         </p>
       </div>
     </div>
@@ -254,7 +241,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            With the widespread adoption of VR devices and immersive content, demands for 3D virtual scene generation are rapidly increasing. An expected virtual scene should satisfy <strong>1)</strong> structural consistency for free-viewpoint exploration, and <strong>2)</strong> semantic fidelity to the input description. However, under progressive view expansion, current pipelines are prone to error accumulation: small depth or alignment errors can rapidly amplify into geometric drift, while locally synthesized views may gradually deviate from the intended semantics, resulting in inconsistent layouts and illogical content. To address these limitations, we propose <strong>SceneArchitect</strong>, which alternates two core steps: <em>Structural Consolidation</em>, leveraging a foreground-centric reconstruction strategy together with cross-view depth consistency to preserve geometric coherence during scene growth, and <em>Semantic Grounding</em>, maintaining a global reference view for completion-region localization and scene-level context preservation, followed by context-aware prompt refinement to keep local synthesis controllable without drifting from the overall semantics. We further pioneer a depth-aware regularization for Gaussian-based scene optimization to promote coherent spatial reconstruction while retaining fine-grained appearance. Extensive experiments demonstrate that SceneArchitect mitigates structural drift and semantic inconsistency, improving geometric coherence and text--scene alignment over representative baselines for progressive 3D scene generation.
+            With the widespread adoption of VR devices and immersive content, the demand for progressive 3D scene generation is rapidly increasing. An effective virtual scene should satisfy <strong>1)</strong> structural consistency for free-viewpoint exploration and <strong>2)</strong> scene-level semantic coherence with the input description. However, when a scene is expanded progressively from limited observations, existing pipelines are prone to error accumulation: small depth or alignment errors can gradually amplify into geometric distortion, while locally synthesized views may drift from the intended scene semantics, resulting in inconsistent layouts and illogical content. To address these limitations, we propose <strong>SceneArchitect</strong>, a progressive 3D scene generation framework built on two core components: <em>Structural Consolidation</em>, which leverages a foreground-centric reconstruction strategy together with cross-view depth alignment and fusion to preserve geometric coherence during scene growth, and <em>Semantic Grounding</em>, which maintains a global reference view for completion-region localization and scene-level context preservation, followed by context-aware prompt refinement to keep local synthesis controllable without drifting from the overall semantics. To further stabilize the final 3D representation, we introduce a depth-regularized Gaussian refinement strategy with staged optimization, improving robustness under imperfect monocular depth priors while retaining fine-grained appearance. Extensive experiments on diverse indoor and outdoor scenes show that SceneArchitect mitigates geometric and semantic error accumulation, achieving better structural coherence, semantic consistency, and overall visual quality than representative baselines for progressive 3D scene generation.
           </p>
           
           <div class="columns is-centered has-text-centered">
@@ -283,7 +270,7 @@
           </figure>
         </div>
         <div class="content has-text-justified">
-          <strong>Pipeline Overview of SceneArchitect.</strong> Our framework consists of two alternating stages, namely Structural Consolidation for geometry stabilization and Semantic Grounding for globally anchored completion, followed by depth-regularized Gaussian refinement. <em>SceneArchitect</em> supports coherent progressive expansion without manual path design.
+          Fig. <strong>Method overview of SceneArchitect.</strong> SceneArchitect alternates <em>Structural Consolidation</em> for geometric stabilization and <em>Semantic Grounding</em> for scene-level coherence during progressive scene growth, followed by <em>depth-regularized Gaussian refinement</em> with staged optimization.
         </div>
       </div>
     </div>
@@ -293,7 +280,7 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">3D Comparisons</h2>
+    <h2 class="title is-3 has-text-centered">Quantitative and Qualitative Comparison</h2>
 
     <div class="columns is-centered">
       <div class="content has-text-justified">
@@ -304,12 +291,11 @@
     </div>
     
     <p class="has-text-centered" style="margin-bottom: 1.25rem;">
-      Fig. Visual comparisons under viewpoint changes.
+      Fig. Representative qualitative comparison on an indoor scene.
     </p>
 
     <p class="has-text-centered" style="margin-bottom: 1.25rem;">
-      Table. We report text–scene alignment and perceptual quality metrics.
-      <strong>Bold</strong> indicates the best result.
+      Table. Selected quantitative metrics on representative baselines. <strong>Bold</strong> indicates the best result, and <u>underline</u> indicates the second-best result.
     </p>
 
     <div class="columns is-centered">
@@ -343,9 +329,9 @@
                 <td>38.301</td><td>5.834</td>
               </tr>
               <tr>
-                <td>BloomScene</td><td>5.088</td><td>31.810</td>
-                <td>0.743</td><td>0.813</td><td>0.250</td>
-                <td>23.966</td><td>3.303</td>
+                <td>BloomScene</td><td><u>5.088</u></td><td>31.810</td>
+                <td>0.743</td><td>0.701</td><td>0.250</td>
+                <td>24.260</td><td>3.303</td>
               </tr>
               <tr>
                 <td>DreamScene360</td><td>4.858</td><td>28.602</td>
@@ -354,8 +340,18 @@
               </tr>
               <tr>
                 <td>LayerPano3D</td><td>4.994</td><td>31.383</td>
-                <td>0.795</td><td>0.690</td><td>0.183</td>
-                <td>24.260</td><td>3.212</td>
+                <td><u>0.795</u></td><td>0.808</td><td>0.183</td>
+                <td><u>23.966</u></td><td><u>3.212</u></td>
+              </tr>
+              <tr>
+                <td>WonderJourney</td><td>4.846</td><td>30.300</td>
+                <td>0.672</td><td>0.680</td><td>0.200</td>
+                <td>26.355</td><td>5.001</td>
+              </tr>
+              <tr>
+                <td>WonderWorld</td><td>4.922</td><td><u>32.443</u></td>
+                <td><strong>0.803</strong></td><td><u>0.813</u></td><td>0.258</td>
+                <td>25.027</td><td>3.225</td>
               </tr>
               <tr>
                 <td><strong>SceneArchitect (Ours)</strong></td>
@@ -363,7 +359,7 @@
                 <td><strong>33.514</strong></td>
                 <td><strong>0.803</strong></td>
                 <td><strong>0.845</strong></td>
-                <td>0.258</td>
+                <td><u>0.279</u></td>
                 <td><strong>22.696</strong></td>
                 <td><strong>3.074</strong></td>
               </tr>
@@ -373,7 +369,7 @@
       </div>
     </div>
     <p style="margin-top: 0.75rem;">
-      <strong>Comparison between the baseline and our method.</strong> Our results preserve global structure and improve local details under large viewpoint changes.
+      <strong>Comparison between prior methods and SceneArchitect.</strong> Our results preserve global structure and improve local details under large viewpoint changes.
     </p>
 
   </div>
@@ -392,11 +388,11 @@
     </div>
 
     <p class="has-text-centered" style="margin-bottom: 1.25rem;">
-      Fig.Visual comparisons under viewpoint changes.
+      Fig. Ablation study of SceneArchitect. 
     </p>
 
     <p class="has-text-centered" style="margin-bottom: 1.25rem;">
-      Table. Ablation results of different components. <strong>Bold</strong> indicates the best result.
+      Table. Ablation results of the main components. <strong>Bold</strong> indicates the best result, and <u>underline</u> indicates the second-best result.
     </p>
 
     <div class="columns is-centered">
@@ -420,14 +416,9 @@
             </thead>
             <tbody>
               <tr>
-                <td>w/o Structural Consolidation</td><td>5.433</td><td>34.145</td>
-                <td>0.898</td><td>0.981</td><td>0.747</td>
-                <td>23.460</td><td>3.109</td>
-              </tr>
-              <tr>
-                <td>w/o Semantic Grounding</td><td>5.463</td><td>34.353</td>
-                <td>0.881</td><td>0.908</td><td>0.678</td>
-                <td>23.790</td><td>3.450</td>
+                <td>w/o Structural Consolidation</td><td>5.433</td><td><u>34.145</u></td>
+                <td><u>0.898</u></td><td><u>0.981</u></td><td>0.747</td>
+                <td><u>23.460</u></td><td><u>3.109</u></td>
               </tr>
               <tr>
                 <td>w/o Depth Regularization</td><td>5.313</td><td>30.724</td>
@@ -435,7 +426,12 @@
                 <td>25.491</td><td>3.287</td>
               </tr>
               <tr>
-                <td><strong>Full (Ours)</strong></td>
+                <td>w/o Freezing</td><td><u>5.463</u></td><td>32.478</td>
+                <td>0.801</td><td>0.969</td><td><u>0.792</u></td>
+                <td><u>23.460</u></td><td>3.155</td>
+              </tr>
+              <tr>
+                <td><strong>Full model (Ours)</strong></td>
                 <td><strong>5.593</strong></td>
                 <td><strong>34.978</strong></td>
                 <td><strong>0.910</strong></td>
@@ -450,7 +446,40 @@
       </div>
     </div>
     <p style="margin-top: 0.75rem;">
-      <strong>Ablation study of SceneArchitect.</strong> We compare the full model with variants that remove key components: without Structural Consolidation, without Semantic Grounding, and without Depth-Regularized Gaussian Refinement.
+      <strong>Ablation study of SceneArchitect.</strong> Structural Consolidation improves the geometric prior for expansion, while depth regularization and staged freezing stabilize Gaussian refinement under imperfect monocular depth priors.
+    </p>
+
+    <p class="has-text-centered" style="margin: 1.25rem 0 0.75rem 0;">
+      Prompt perturbation under larger semantic deviation. <strong>Bold</strong> indicates the better result.
+    </p>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="table-container">
+          <table class="table is-fullwidth is-striped is-hoverable is-bordered is-narrow">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>CLIP-Score ↑</th>
+                <th>Quality ↑</th>
+                <th>Sharp ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>P-change + w/o SG</td><td>26.998</td><td>0.720</td><td>0.704</td>
+              </tr>
+              <tr>
+                <td><strong>P-change + Full</strong></td><td><strong>34.147</strong></td><td><strong>0.881</strong></td><td><strong>0.778</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 0.75rem;">
+      <strong>Prompt perturbation.</strong> Under a larger semantic change, Semantic Grounding improves CLIP-Score from <strong>26.998</strong> to <strong>34.147</strong>, while Quality and Sharp rise from <strong>0.720/0.704</strong> to <strong>0.881/0.778</strong>, highlighting the importance of scene-level anchoring.
     </p>
   </div>
 </section>
@@ -501,7 +530,8 @@
     </style>
 <section class="section">
   <div class="container is-max-desktop">
-    <h3 class="title is-3">Real 3D with Structurally Consistent and Semantically Faithful</h3>
+    <h3 class="title is-3">Additional Results on Diverse Indoor and Outdoor Scenes</h3>
+    <p class="has-text-centered" style="margin-bottom: 1rem;">Additional indoor, outdoor-generated, and real-scene examples.</p>
     <div class="content has-text-justified">
     <p>
       <strong>Outdoor Scene</strong> <br> 
@@ -667,7 +697,7 @@
   <div class="container is-max-desktop">
     <div class="content has-text-centered" style="font-size: 0.95rem; color: #666;">
       <p>
-        © SceneArchitect Project Page. Xidian University Prof. Bin Song's Team. All rights reserved.
+        Anonymous project page for peer review only. 
       </p>
     </div>
   </div>
