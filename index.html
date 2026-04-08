@@ -2,22 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" 
-        content="SceneArchitect: Progressive 3D Scene Generation with Structural Consolidation and Semantic Grounding">
-  <meta name="keywords" content="3D Scene Generation, Structural Consistency, Semantic Grounding, 3D Gaussian Splatting">
+  <meta name="description" content="SceneArchitect: Progressive 3D Scene Generation with Structural Consolidation and Semantic Grounding">
+  <meta name="keywords" content="3D Scene Generation, Structural Consolidation, Semantic Grounding, 3D Gaussian Splatting">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>SceneArchitect: Progressive 3D Scene Generation with Structural Consolidation and Semantic Grounding</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -26,176 +22,139 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
     MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      },
-      svg: {
-        fontCache: 'global'
-      }
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
     };
   </script>
   <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-  </script>
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-  <script
-  defer
-  src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"
-  ></script>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
-  />
-
+  <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
   <link rel="image_src" href="./media/pipeline.png">
-  
+
   <style>
-    .before,
-    .after {
-      margin: 0;
-    }
-  
-    .before figcaption,
-    .after figcaption {
+    .before, .after { margin: 0; }
+    .before figcaption, .after figcaption {
       background: #fff;
       border: 1px solid #c0c0c0;
       border-radius: 4px;
       color: #2e3452;
-      opacity: 0.8;
-      padding: 4px;
+      opacity: 0.85;
+      padding: 4px 6px;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      line-height: 70%;
+      line-height: 1;
+      font-size: 0.8rem;
     }
-  
-    .before figcaption {
-      left: 4px;
+    .before figcaption { left: 4px; }
+    .after figcaption { right: 4px; }
+
+    .container_teaser {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
     }
-  
-    .after figcaption {
-      right: 4px;
+    .column_teaser {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .row img { height: 128px; }
+
+    .section-note,
+    .section-note p,
+    .content.has-text-justified,
+    .content.has-text-justified p,
+    .content.has-text-left,
+    .content.has-text-left p {
+      color: #000 !important;
     }
 
+    .section-note {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-top: 0.5rem;
+    }
 
+    .subnote {
+      color: #000;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-top: 0.75rem;
+      margin-bottom: 0;
+    }
+
+    .figure-caption {
+      color: #000;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-top: 0.75rem;
+      text-align: left;
+    }
+
+    .black-table th, .black-table td {
+      color: #000 !important;
+      vertical-align: middle;
+    }
+
+    .result-block {
+      margin-top: 1.25rem;
+    }
+
+    .full-figure {
+      margin-top: 0.75rem;
+    }
+
+    .full-figure img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ececec;
+    }
+
+    .results-carousel-wrapper {
+      width: 82%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .footer-note {
+      font-size: 0.95rem;
+      color: #000;
+      line-height: 1.7;
+    }
   </style>
 
-<style>
-  .button-container_teaser {
-      display: flex;       
-      justify-content: center; 
-      align-items: center;
-  }
-
-  .glow-button {
-      position: relative;
-      display: inline-block;
-      padding: 2px;
-      border-radius: 10px;
-      z-index: 0;
-      margin-bottom: 15px;
-  }
-
-  .glow-button button {
-      background: transparent; 
-      border: none; 
-      color: white; 
-      padding: 5px 10px; 
-      font-size: 16px; 
-      border-radius: 10px; 
-      cursor: pointer; 
-      outline: none; 
-  }
-
-  .glow-button:before {
-      content: "";
-      background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      background-size: 400%;
-      z-index: -1;
-      filter: blur(5px);
-      -webkit-filter: blur(5px);
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
-      animation: glowing-button-85 20s linear infinite;
-      transition: opacity 0.3s ease-in-out;
-      border-radius: 10px;
-  }
-
-  @keyframes glowing-button-85 {
-      0% { background-position: 0 0; }
-      50% { background-position: 400% 0; }
-      100% { background-position: 0 0; }
-  }
-
-  .glow-button:after {
-      z-index: -1;
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #222;
-      left: 0;
-      top: 0;
-      border-radius: 10px;
-  }
-</style>
-
-<style>
-  .container_teaser {
-      display: flex; /* Enables Flexbox */
-      justify-content: center; /* Horizontally centers the content */
-      align-items: center; /* Vertically centers the content */
-      height: 100%; /* Set the height of the container */
-  }
-
-  .column_teaser {
-      flex: 0 0 auto; /* This ensures that the column doesn't grow or shrink */
-      width: 100%; /* Adjust this width as needed */
-      max-width: 800px; /* Adjust this max-width as needed */
-      margin: 0 auto; /* Centers the column within the container */
-  }
-
-  .row {
-    display: flex;
-    align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中 */
-    gap: 10px;
-  }
-  .row img{
-    height: 128px;            /* 建议统一高度，最好别用 width:auto 乱跳 */
-  }
-
-</style>
-  <script
-  defer
-  src="./static/js/image-comparison-slider.js"
-  ></script>
-  <link
-    rel="stylesheet"
-    href="./static/css/image-comparison-slider.css"
-  />
-
+  <script defer src="./static/js/image-comparison-slider.js"></script>
+  <link rel="stylesheet" href="./static/css/image-comparison-slider.css" />
 </head>
 <body>
 
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
-        <h1 class="title is-1 publication-title"> 
-          <div class="row">
-            <img src="media/logo.png" alt="SceneArchitect" width="200"> SceneArchitect
-          </div>
-        </h1>
+      <h1 class="title is-1 publication-title">
+        <div class="row">
+          <img src="media/logo.png" alt="SceneArchitect" width="200"> SceneArchitect
+        </div>
+      </h1>
       <h1 class="title is-2 publication-title">
         Progressive 3D Scene Generation with Structural Consolidation and Semantic Grounding
       </h1>
@@ -212,7 +171,6 @@
           </a>
         </span>
       </div>
-
     </div>
   </div>
 </section>
@@ -222,13 +180,13 @@
     <div class="column_teaser">
       <div class="columns is-centered">
         <figure class="image is-centered">
-          <img src="./media/teaserfigure.png" alt="teaser gif">
+          <img src="./media/teaserfigure.png" alt="SceneArchitect teaser figure">
         </figure>
       </div>
-      <div class="content has-text-justified">
-        <p>
-          Fig. <strong>Overview of SceneArchitect.</strong> Starting from a text prompt and an initial generated view, <em>SceneArchitect</em> progressively expands a navigable 3D scene by alternating Structural Consolidation and Semantic Grounding, followed by depth-regularized Gaussian refinement for free-viewpoint exploration.
-        </p>
+      <div class="figure-caption">
+        <strong>Overview of SceneArchitect.</strong> Starting from a text prompt and an initial generated view,
+        <em>SceneArchitect</em> progressively expands a navigable 3D scene by alternating Structural Consolidation
+        and Semantic Grounding, followed by depth-regularized Gaussian refinement for free-viewpoint exploration.
       </div>
     </div>
   </div>
@@ -241,17 +199,37 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            With the widespread adoption of VR devices and immersive content, the demand for progressive 3D scene generation is rapidly increasing. An effective virtual scene should satisfy <strong>1)</strong> structural consistency for free-viewpoint exploration and <strong>2)</strong> scene-level semantic coherence with the input description. However, when a scene is expanded progressively from limited observations, existing pipelines are prone to error accumulation: small depth or alignment errors can gradually amplify into geometric distortion, while locally synthesized views may drift from the intended scene semantics, resulting in inconsistent layouts and illogical content. To address these limitations, we propose <strong>SceneArchitect</strong>, a progressive 3D scene generation framework built on two core components: <em>Structural Consolidation</em>, which leverages a foreground-centric reconstruction strategy together with cross-view depth alignment and fusion to preserve geometric coherence during scene growth, and <em>Semantic Grounding</em>, which maintains a global reference view for completion-region localization and scene-level context preservation, followed by context-aware prompt refinement to keep local synthesis controllable without drifting from the overall semantics. To further stabilize the final 3D representation, we introduce a depth-regularized Gaussian refinement strategy with staged optimization, improving robustness under imperfect monocular depth priors while retaining fine-grained appearance. Extensive experiments on diverse indoor and outdoor scenes show that SceneArchitect mitigates geometric and semantic error accumulation, achieving better structural coherence, semantic consistency, and overall visual quality than representative baselines for progressive 3D scene generation.
+            With the widespread adoption of VR devices and immersive content, the demand for progressive 3D scene
+            generation is rapidly increasing. An effective virtual scene should satisfy <strong>1)</strong> structural
+            consistency for free-viewpoint exploration and <strong>2)</strong> scene-level semantic coherence with the
+            input description. However, when a scene is expanded progressively from limited observations, existing
+            pipelines are prone to error accumulation: small depth or alignment errors can gradually amplify into
+            geometric distortion, while locally synthesized views may drift from the intended scene semantics, resulting
+            in inconsistent layouts and illogical content. To address these limitations, we propose
+            <strong>SceneArchitect</strong>, a progressive 3D scene generation framework built on two core components:
+            <em>Structural Consolidation</em>, which leverages a foreground-centric reconstruction strategy together with
+            cross-view depth alignment and fusion to preserve geometric coherence during scene growth, and
+            <em>Semantic Grounding</em>, which maintains a global reference view for completion-region localization and
+            scene-level context preservation, followed by context-aware prompt refinement to keep local synthesis
+            controllable without drifting from the overall semantics. To further stabilize the final 3D representation,
+            we introduce a depth-regularized Gaussian refinement strategy with staged optimization, improving robustness
+            under imperfect monocular depth priors while retaining fine-grained appearance. Extensive experiments on
+            diverse indoor and outdoor scenes show that SceneArchitect mitigates geometric and semantic error
+            accumulation, achieving better structural coherence, semantic consistency, and overall visual quality than
+            representative baselines for progressive 3D scene generation.
           </p>
-          
-          <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-              <h2 class="title is-3">Video</h2>
-              <div class="publication-video">
-                <iframe src="./media/video.mp4" 
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              </div>
+        </div>
+
+        <div class="columns is-centered has-text-centered" style="margin-top: 1.5rem;">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Video</h2>
+            <div class="publication-video">
+              <iframe src="./media/video.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
+            <p class="subnote">
+              The video summarizes progressive scene growth, free-viewpoint rendering, and representative results in both
+              virtual and real scenes.
+            </p>
           </div>
         </div>
       </div>
@@ -265,43 +243,77 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Approach</h2>
         <div class="columns is-centered">
-          <figure class="image is-centered">
-            <img src="./media/pipeline.png" alt="Pipeline Image">
+          <figure class="image is-centered full-figure">
+            <img src="./media/pipeline.png" alt="Method overview of SceneArchitect">
           </figure>
         </div>
-        <div class="content has-text-justified">
-          Fig. <strong>Method overview of SceneArchitect.</strong> SceneArchitect alternates <em>Structural Consolidation</em> for geometric stabilization and <em>Semantic Grounding</em> for scene-level coherence during progressive scene growth, followed by <em>depth-regularized Gaussian refinement</em> with staged optimization.
+        <div class="section-note has-text-justified">
+          <p>
+            <strong>Method overview of SceneArchitect.</strong> SceneArchitect alternates
+            <em>Structural Consolidation</em> for geometric stabilization and <em>Semantic Grounding</em> for
+            scene-level coherence during progressive scene growth, followed by
+            <em>depth-regularized Gaussian refinement</em> with staged optimization. The overall design explicitly
+            targets the coupled accumulation of geometric and semantic errors in long-horizon scene expansion.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Quantitative and Qualitative Comparison</h2>
 
-    <div class="columns is-centered">
+    <div class="section-note has-text-justified">
+      <p>
+        Before comparing with prior methods, we first present representative results of SceneArchitect on four scenes to provide 
+        an overall impression of the generated scene quality. These examples illustrate that SceneArchitect can produce coherent 
+        3D scenes with stable structures, plausible local details, and consistent scene semantics across diverse layouts.
+      </p>
+    </div>
+
+    <div class="columns is-centered result-block">
       <div class="content has-text-justified">
-        <figure class="image is-centered">
-          <img src="./media/compare.png" alt="Baseline result">
+        <figure class="image is-centered full-figure">
+          <img src="./media/result.png" alt="Result qualitative ">
         </figure>
       </div>
     </div>
-    
-    <p class="has-text-centered" style="margin-bottom: 1.25rem;">
-      Fig. Representative qualitative comparison on an indoor scene.
+
+    <div class="section-note has-text-justified">
+      <p>
+        Then we compare SceneArchitect with representative progressive scene generation baselines on a representative indoor
+        scene and report quantitative metrics on six scenes with thirty rendered views per scene. The qualitative
+        comparison highlights how SceneArchitect preserves clearer geometry and more coherent local completions under
+        large viewpoint changes, while the quantitative table summarizes text--scene alignment and perceptual quality
+        across representative baselines.
+      </p>
+    </div>
+
+    <div class="columns is-centered result-block">
+      <div class="content has-text-justified">
+        <figure class="image is-centered full-figure">
+          <img src="./media/compare.png" alt="Qualitative comparison with prior methods">
+        </figure>
+      </div>
+    </div>
+
+    <p class="figure-caption">
+      <strong>Representative qualitative comparison on an indoor scene.</strong> SceneArchitect produces more coherent
+      geometry and more stable scene completions during progressive view expansion, especially in regions where large
+      parallax, occlusion, or local inpainting ambiguity make long-horizon generation difficult.
     </p>
 
-    <p class="has-text-centered" style="margin-bottom: 1.25rem;">
-      Table. Selected quantitative metrics on representative baselines. <strong>Bold</strong> indicates the best result, and <u>underline</u> indicates the second-best result.
+    <p class="figure-caption">
+      <strong>Selected quantitative metrics on representative baselines.</strong> <strong>Bold</strong> indicates the
+      best result, and <u>underline</u> indicates the second-best result.
     </p>
 
     <div class="columns is-centered">
       <div class="column is-12">
         <div class="table-container">
-          <table class="table is-fullwidth is-striped is-hoverable is-bordered is-narrow">
+          <table class="table is-fullwidth is-striped is-hoverable is-bordered is-narrow black-table">
             <thead>
               <tr>
                 <th rowspan="2">Method</th>
@@ -368,10 +380,12 @@
         </div>
       </div>
     </div>
-    <p style="margin-top: 0.75rem;">
-      <strong>Comparison between prior methods and SceneArchitect.</strong> Our results preserve global structure and improve local details under large viewpoint changes.
-    </p>
 
+    <p class="section-note has-text-justified">
+      <strong>Summary.</strong> Across these metrics, SceneArchitect achieves the best overall trade-off among
+      structural stability, semantic alignment, and perceptual quality. In particular, it attains the highest
+      CLIP-Score and Aesthetic score while maintaining stronger no-reference quality than prior methods.
+    </p>
   </div>
 </section>
 
@@ -379,26 +393,33 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Ablation Study</h2>
 
-    <div class="columns is-centered">
+    <div class="section-note has-text-justified">
+      <p>
+        We provide both qualitative and quantitative ablations to clarify the contribution of Structural Consolidation,
+        depth-regularized Gaussian refinement, staged freezing, and Semantic Grounding under prompt perturbation. The
+        following results illustrate not only which components matter, but also how each component changes the generated
+        geometry and scene behavior in practice.
+      </p>
+    </div>
+
+    <div class="columns is-centered result-block">
       <div class="content has-text-justified">
-        <figure class="image is-centered">
-          <img src="./media/ablation.png" alt="Ablation results">
+        <figure class="image is-centered full-figure">
+          <img src="./media/ablation.png" alt="Ablation study of SceneArchitect">
         </figure>
       </div>
     </div>
 
-    <p class="has-text-centered" style="margin-bottom: 1.25rem;">
-      Fig. Ablation study of SceneArchitect. 
-    </p>
-
-    <p class="has-text-centered" style="margin-bottom: 1.25rem;">
-      Table. Ablation results of the main components. <strong>Bold</strong> indicates the best result, and <u>underline</u> indicates the second-best result.
+    <p class="figure-caption">
+      <strong>Ablation study of SceneArchitect.</strong> Structural Consolidation improves the geometric prior for
+      expansion, while depth regularization and staged freezing stabilize Gaussian refinement under imperfect monocular
+      depth priors.
     </p>
 
     <div class="columns is-centered">
       <div class="column is-12">
         <div class="table-container">
-          <table class="table is-fullwidth is-striped is-hoverable is-bordered is-narrow">
+          <table class="table is-fullwidth is-striped is-hoverable is-bordered is-narrow black-table">
             <thead>
               <tr>
                 <th rowspan="2">Method</th>
@@ -445,18 +466,33 @@
         </div>
       </div>
     </div>
-    <p style="margin-top: 0.75rem;">
-      <strong>Ablation study of SceneArchitect.</strong> Structural Consolidation improves the geometric prior for expansion, while depth regularization and staged freezing stabilize Gaussian refinement under imperfect monocular depth priors.
+
+    <p class="section-note has-text-justified">
+      <strong>Main ablation summary.</strong> Removing depth regularization leads to noisier geometry and stronger
+      artifact accumulation, while removing staged freezing still causes unstable local deformation. This supports the
+      claim that depth regularization alone is insufficient and that staged freezing is necessary to stabilize Gaussian
+      refinement before appearance refinement.
     </p>
 
-    <p class="has-text-centered" style="margin: 1.25rem 0 0.75rem 0;">
-      Prompt perturbation under larger semantic deviation. <strong>Bold</strong> indicates the better result.
+    <div class="columns is-centered result-block">
+      <div class="column is-11">
+        <div class="full-figure">
+          <img src="./media/freezing_vis.png" alt="Depth regularization vs staged freezing">
+        </div>
+      </div>
+    </div>
+
+    <p class="figure-caption">
+      <strong>Depth regularization vs. staged freezing.</strong> Without depth regularization, the rendered scenes
+      exhibit obvious holes and incomplete geometry. Without staged freezing, local structures become stretched or
+      fragmented, which is also visible in the depth maps. The full model yields cleaner geometry and more stable local
+      structure.
     </p>
 
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="table-container">
-          <table class="table is-fullwidth is-striped is-hoverable is-bordered is-narrow">
+          <table class="table is-fullwidth is-striped is-hoverable is-bordered is-narrow black-table">
             <thead>
               <tr>
                 <th>Method</th>
@@ -478,226 +514,231 @@
       </div>
     </div>
 
-    <p style="margin-top: 0.75rem;">
-      <strong>Prompt perturbation.</strong> Under a larger semantic change, Semantic Grounding improves CLIP-Score from <strong>26.998</strong> to <strong>34.147</strong>, while Quality and Sharp rise from <strong>0.720/0.704</strong> to <strong>0.881/0.778</strong>, highlighting the importance of scene-level anchoring.
+    <p class="section-note has-text-justified">
+      <strong>Prompt perturbation.</strong> We further stress-test Semantic Grounding by injecting prompts with larger
+      semantic deviation during scene growth. Under this setting, Semantic Grounding improves CLIP-Score from
+      <strong>26.998</strong> to <strong>34.147</strong>, while Quality and Sharp rise from
+      <strong>0.720 / 0.704</strong> to <strong>0.881 / 0.778</strong>, highlighting the importance of scene-level
+      anchoring when the prompt is revised mid-generation.
+    </p>
+
+    <div class="columns is-centered result-block">
+      <div class="column is-11">
+        <div class="full-figure">
+          <img src="./media/prompt_change_vis.png" alt="Prompt perturbation under scene growth">
+        </div>
+      </div>
+    </div>
+
+    <p class="figure-caption">
+      <strong>Prompt perturbation under scene growth.</strong> We inject new prompts with larger semantic deviation
+      during progressive expansion, including additional scene content and style cues. Compared with the variant
+      without Semantic Grounding, the full model produces more coherent style transitions and better integrates newly
+      introduced content into the surrounding scene context.
     </p>
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-  #results-carousel {
-      width: 80%; 
-      max-width: 1200px; 
-      margin: auto; 
-      overflow-x: hidden; 
-      overflow-y: hidden; 
-  }
-    </style>
 <section class="section">
   <div class="container is-max-desktop">
-    <h3 class="title is-3">Additional Results on Diverse Indoor and Outdoor Scenes</h3>
-    <p class="has-text-centered" style="margin-bottom: 1rem;">Additional indoor, outdoor-generated, and real-scene examples.</p>
-    <div class="content has-text-justified">
-    <p>
-      <strong>Outdoor Scene</strong> <br> 
-    </p>
+    <h2 class="title is-3 has-text-centered">Additional Qualitative Results</h2>
+
+    <div class="section-note has-text-justified">
+      <p>
+        Beyond the main-paper comparisons, we further visualize SceneArchitect under broader exploration settings and
+        more diverse scene types. These additional results highlight the practical value of the method for immersive
+        scene browsing, controllable scene generation, and stable free-viewpoint exploration in both virtual and real
+        environments.
+      </p>
     </div>
+
+    <div class="columns is-centered result-block">
+      <div class="column is-11">
+        <div class="full-figure">
+          <img src="./media/supp_360.png" alt="360 rendered views of representative scenes">
+        </div>
+      </div>
+    </div>
+
+    <p class="figure-caption">
+      <strong>360° rendered views of representative scenes.</strong> We render seven viewpoints per scene along a full
+      360° traversal. The three examples include a virtual seaside scene, a real indoor Christmas-cabin scene, and a
+      real outdoor scene. The first and last views remain visually well aligned, showing that SceneArchitect can
+      maintain stable structures, consistent scene semantics, and visually coherent closed-loop exploration under
+      wide-view traversal.
+    </p>
+
+    <div class="columns is-centered result-block">
+      <div class="column is-11">
+        <div class="full-figure">
+          <img src="./media/supp_more_results.png" alt="Additional generated scenes in virtual and real settings">
+        </div>
+      </div>
+    </div>
+
+    <p class="figure-caption">
+      <strong>Additional generated scenes in virtual and real settings.</strong> We show more results under both
+      text-only and image+text inputs, including real scenes such as a bedroom, fruit market, and kitchen, as well as
+      additional virtual scenes. RGB renderings and depth visualizations are shown together to illustrate that
+      SceneArchitect can preserve global layout and scene-level coherence across diverse content types and input modes.
+    </p>
+
+    <div class="section-note has-text-justified">
+      <p>
+        More animated results, RGB-depth browsing examples, and interactive 3D visualizations are available below and
+        on the anonymous project page. Together, these additional results complement the main paper by showing that the
+        method remains stable under wider camera traversal, more diverse scene content, and more flexible user inputs.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">More Dynamic Results</h2>
+    <div class="section-note has-text-justified">
+      <p>
+        The following examples show RGB renderings together with their corresponding depth visualizations. These dynamic
+        demonstrations provide a more intuitive view of the generated geometry, local structure, and appearance
+        consistency during scene exploration. Additional animated results and interactive 3D visualizations are also
+        available on the anonymous project page.
+      </p>
+    </div>
+
+    <p class="has-text-centered" style="margin-bottom: 1rem; color: #000;"><strong>Outdoor Scenes</strong></p>
     <div class="columns is-centered">
       <div class="column">
-        <div>
-          <div id="results-carousel" class="carousel results-carousel">
-      
+        <div class="results-carousel-wrapper">
+          <div id="results-carousel-outdoor" class="carousel results-carousel">
             <div class="column">
               <div>
                 <img-comparison-slider>
-                  <figure slot="first" class="before">
-                    <img width="100%" src="./media/animelakehouse.gif">
-                  </figure>
-                  <figure slot="second" class="after">
-                    <img width="100%" src="./media/animelakehouse_depth.gif">
-                    
+                  <figure slot="first" class="before"><img width="100%" src="./media/animelakehouse.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/animelakehouse_depth.gif"></figure>
                 </img-comparison-slider>
               </div>
-              <h4 class="title is-6"> A boat on lake</h4>
-            </div>
-            
-            <div class="column">
-              <div>
-                <img-comparison-slider>
-                  <figure slot="first" class="before">
-                    <img width="100%" src="./media/animestreet.gif">
-                  </figure>
-                  <figure slot="second" class="after">
-                    <img width="100%" src="./media/animestreet_depth.gif">
-                </img-comparison-slider>
-              </div>
-              <h4 class="title is-6">  A long anime-style road</h4>
-            </div>
-            
-            <div class="column">
-              <div>
-                <img-comparison-slider>
-                  <figure slot="first" class="before">
-                    <img width="100%" src="./media/cabin.gif">
-                  </figure>
-                  <figure slot="second" class="after">
-                    <img width="100%" src="./media/cabin_depth.gif">
-                </img-comparison-slider>
-              </div>
-              <h4 class="title is-6"> Magician's magical cabin</h4>
-            </div>
-    
-            <div class="column">
-              <div>
-                <img-comparison-slider>
-                  <figure slot="first" class="before">
-                    <img width="100%" src="./media/fantasy.gif">
-                  </figure>
-                  <figure slot="second" class="after">
-                    <img width="100%" src="./media/fantasy_depth.gif">
-                </img-comparison-slider>
-              </div>
-              <h4 class="title is-6"> A colorful floating community city</h4>
-            </div>
-    
-            <div class="column">
-              <div>
-                <img-comparison-slider>
-                  <figure slot="first" class="before">
-                    <img width="100%" src="./media/modernvilla.gif">
-                  </figure>
-                  <figure slot="second" class="after">
-                    <img width="100%" src="./media/modernvilla_depth.gif">
-                </img-comparison-slider>
-              </div>
-              <h4 class="title is-6"> Ultra-modern mega villa</h4>
-            </div>
-    
-            <div class="column">
-              <div>
-                <img-comparison-slider>
-                  <figure slot="first" class="before">
-                    <img width="100%" src="./media/waterfull.gif">
-                  </figure>
-                  <figure slot="second" class="after">
-                    <img width="100%" src="./media/waterfull_depth.gif">
-                </img-comparison-slider>
-              </div>
-              <h4 class="title is-6">  A cascading waterfall</h4>
+              <h4 class="title is-6 has-text-centered">A boat on lake</h4>
             </div>
 
+            <div class="column">
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/animestreet.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/animestreet_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">A long anime-style road</h4>
+            </div>
+
+            <div class="column">
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/cabin.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/cabin_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">Magician's magical cabin</h4>
+            </div>
+
+            <div class="column">
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/fantasy.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/fantasy_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">A colorful floating community city</h4>
+            </div>
+
+            <div class="column">
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/modernvilla.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/modernvilla_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">Ultra-modern mega villa</h4>
+            </div>
+
+            <div class="column">
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/waterfull.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/waterfull_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">A cascading waterfall</h4>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="content has-text-justified">
-    <p>
-      <strong>Indoor Scene</strong> <br> 
-    </p>
-    </div>
+
+    <p class="has-text-centered" style="margin: 1.5rem 0 1rem 0; color: #000;"><strong>Indoor Scenes</strong></p>
     <div class="columns is-centered">
       <div class="column">
-        <div>
-          <div id="results-carousel" class="carousel results-carousel">
+        <div class="results-carousel-wrapper">
+          <div id="results-carousel-indoor" class="carousel results-carousel">
             <div class="column">
-            <div>
-              <img-comparison-slider>
-                <figure slot="first" class="before">
-                  <img width="100%" src="./media/bedroom.gif">
-                </figure>
-                <figure slot="second" class="after">
-                  <img width="100%" src="./media/bedroom_depth.gif">
-              </img-comparison-slider>
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/bedroom.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/bedroom_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">A bedroom</h4>
             </div>
-            <h4 class="title is-6"> A bedroom</h4>
-          </div>
-    
-            <div class="column">
-            <div>
-              <img-comparison-slider>
-                <figure slot="first" class="before">
-                  <img width="100%" src="./media/christmas.gif">
-                </figure>
-                <figure slot="second" class="after">
-                  <img width="100%" src="./media/christmas_depth.gif">
-              </img-comparison-slider>
-            </div>
-            <h4 class="title is-6"> Cozy livingroom in christmas</h4>
-          </div>
-    
-            <div class="column">
-            <div>
-              <img-comparison-slider>
-                <figure slot="first" class="before">
-                  <img width="100%" src="./media/fruitmarket.gif">
-                </figure>
-                <figure slot="second" class="after">
-                  <img width="100%" src="./media/fruitmarket_depth.gif">
-              </img-comparison-slider>
-            </div>
-            <h4 class="title is-6"> Grocery store with colorful fruit displays</h4>
-          </div>
 
             <div class="column">
-            <div>
-              <img-comparison-slider>
-                <figure slot="first" class="before">
-                  <img width="100%" src="./media/kitchen.gif">
-                </figure>
-                <figure slot="second" class="after">
-                  <img width="100%" src="./media/kitchen_depth.gif">
-              </img-comparison-slider>
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/christmas.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/christmas_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">Cozy livingroom in christmas</h4>
             </div>
-            <h4 class="title is-6"> High-resolution photography kitchen design</h4>
-          </div>
 
+            <div class="column">
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/fruitmarket.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/fruitmarket_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">Grocery store with colorful fruit displays</h4>
+            </div>
+
+            <div class="column">
+              <div>
+                <img-comparison-slider>
+                  <figure slot="first" class="before"><img width="100%" src="./media/kitchen.gif"></figure>
+                  <figure slot="second" class="after"><img width="100%" src="./media/kitchen_depth.gif"></figure>
+                </img-comparison-slider>
+              </div>
+              <h4 class="title is-6 has-text-centered">High-resolution photography kitchen design</h4>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="section-note has-text-justified">
+      <p>
+        These RGB-depth demonstrations further illustrate that SceneArchitect supports both virtual and real scenes
+        under text-only and image+text inputs. The depth views help reveal the recovered spatial layout, while the RGB
+        animations show that the resulting scenes remain plausible for subsequent rendering and exploration.
+      </p>
     </div>
   </div>
 </section>
 
 <section class="section" style="padding-top: 1.5rem;">
   <div class="container is-max-desktop">
-    <div class="content has-text-centered" style="font-size: 0.95rem; color: #666;">
+    <div class="content has-text-centered footer-note">
       <p>
-        Anonymous project page for peer review only. 
+        Anonymous project page for ACM MM review only. The anonymous code repository is available at 
+        <a href="https://anonymous.4open.science/r/SceneArchitect" target="_blank" rel="noopener noreferrer">https://anonymous.4open.science/r/SceneArchitect</a>
       </p>
     </div>
   </div>
